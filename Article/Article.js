@@ -88,6 +88,76 @@ const data = [
   }
 ];
 
+// const article = document.querySelector('.articles');
+
+// data.forEach(data => {
+//   articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+// });
+
+function createArticle(title, date, firstParagraph, secondParagraph,thirdParagraph){
+  
+  //Define New Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('div');
+
+  //Three Paragraph Elements
+  const articlePOne = document.createElement('p');
+  const articlePTwo = document.createElement('p');
+  const articlePThree = document.createElement('p');
+
+  //Button as Span? from example may change later
+  const expandButton = document.createElement('span');
+
+  //Set Structure of Elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(expandButton);
+  article.appendChild(articlePOne);
+  article.appendChild(articlePTwo);
+  article.appendChild(articlePThree);
+ 
+
+  //Set Class Names
+  article.classList.add('article');
+  articleDate.classList.add('article-date');
+  expandButton.classList.add('expand-button');
+
+
+  //Set Content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articlePOne.textContent = firstParagraph;
+  articlePTwo.textContent = secondParagraph;
+  articlePThree.textContent = thirdParagraph;
+  expandButton.textContent = "BUTTON BOOP";
+
+  //ADD EVENT LISTENER CLICK ON BUTTON
+  expandButton.addEventListener('click', (e) => {
+    article.classList.toggle('article-open');
+    console.log("open");
+   
+    // return expandButton;
+  })
+  
+  return article;
+
+}
+
+  //added for each to bottom
+  const article = document.querySelector('.articles');
+  data.forEach(data => {
+    article.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+  });
+
+  //ADD NEW ARTICLES
+  article.appendChild(createArticle('LOUDPVCK'));
+  article.appendChild(createArticle('JUMANJU (feat. Reese LAFLARE)'));
+  // const articleNew = createArticle("that new new");
+  // console.log("new new new", articleNew);
+  
+// createArticle("a", "a", "a", "a", "a");
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
@@ -98,6 +168,8 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
+
+  function createComponent()
 
   Hint: You will need to use createElement more than once here!
 
