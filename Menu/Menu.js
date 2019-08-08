@@ -9,6 +9,48 @@ let menuItems = [
   'Log Out'
 ];
 
+function menuComponent(menuItems){
+
+        //Define New Element div
+  const menu = document.createElement('div');
+
+        //Set Class Name Menu
+        menu.classList.add('menu');
+
+        //Define New Element ul
+  const ul = document.createElement('ul');
+
+        //Set Structure of Element
+        menu.appendChild(ul);
+
+  menuItems.forEach(menuItem => {
+
+          //Define New Element
+    const li = document.createElement('li');
+
+          //Set Content
+          li.textContent = menuItem;
+
+          //Append li to ul as child
+          ul.appendChild(li);
+  });
+
+  const menuButton = document.querySelector('.menu-button');
+        menuButton.addEventListener('click', () => {
+        menu.classList.toggle('menu--open');
+  });
+
+  return menu;
+
+}
+
+  const button = document.querySelector('.menu-button');
+  const menu = menuComponent(menuItems, button);
+  const header = document.querySelector('.header');
+  header.appendChild(menu);
+
+  // header.appendChild(menuComponent('JUMANJU (feat. Reese LAFLARE)'));
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
